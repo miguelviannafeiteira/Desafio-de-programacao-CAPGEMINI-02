@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  // 1°
+  console.log('Questão 1');
+  const mediana = (arr) => {
+    const ordemCrescente = arr.sort((a, b) => a - b);
+    return  console.log(ordemCrescente[(ordemCrescente.length / 2) - .5]);
+  };
+  mediana([9,2,1,4,6]);
+
+  console.log('Questão 2');
+  // 2°
+  const pares = (n, x) => {
+    let arrayDosPares = []
+    let numeroDePares = 0;
+    for(let i = 0; i < n.length; i++){
+        for( let j = i + 1; j <  n.length; j++){
+            if(((n[i] + n[j]) % 2 ===0) && ((n[i] - n[j] === x) ||(n[j] - n[i] === x))){
+              arrayDosPares.push(n[i], n[j])
+              numeroDePares++
+            }
+        }
+    }
+    return console.log(numeroDePares);
+} 
+  pares([1,5,3,4,2], 2);
+
+  console.log('Questão 3');
+  // 3°
+  mensagemEncriptada = (s) =>{
+    const semEspaco = s.replace(/[ ]+/g, '');
+    let raiz = Math.sqrt(semEspaco.length);
+    let arredondado = Math.ceil(raiz); // numero de colunas
+    let encriptada= '';
+    let mensagemEmArray = [];
+
+    for (let i = 0; i < semEspaco.length; i++) {
+      for(let j = i; j < arredondado + i; j++){
+        if(j < semEspaco.length) {
+          mensagemEmArray.push(semEspaco[j]);
+        } else {
+          mensagemEmArray.push('');
+        }
+      }
+    i += arredondado - 1;
+  }
+
+  for(let z =  0; z < arredondado; z++){
+    for(let x = 0; x < arredondado; x++){
+      encriptada += mensagemEmArray[z + arredondado * x];
+    }
+    encriptada += ' ';
+  }
+  console.log(encriptada);
+}
+mensagemEncriptada('tenha um bom dia');
+mensagemEncriptada('ola mundo');
+</script>
+</html>
